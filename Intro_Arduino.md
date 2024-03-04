@@ -5,6 +5,11 @@ Arduino-programmering is gebaseerd op het schrijven van code die wordt uitgevoer
 ## 1.1 Inleiding tot Arduino-programmering
 
 Arduino-programmering omvat het schrijven van code die wordt uitgevoerd op Arduino-borden. Deze borden zijn voorzien van microcontrollers die kunnen worden geprogrammeerd met behulp van de Arduino-programmeertaal.
+De programmeertaal wordt Arduino-programmeertaal genoemd, maar het is eigenlijk een variant van C/C++. De Arduino-programmeertaal is gebaseerd op de standaard C/C++-taal, maar het bevat enkele specifieke bibliotheken en functies die zijn geoptimaliseerd voor de Arduino-hardware en omgeving.
+
+In principe kun je Arduino-code schrijven met behulp van de basisprincipes van C/C++, waaronder variabelen, functies, lussen en voorwaardelijke instructies. De Arduino-bibliotheken bieden extra functionaliteit om de interactie met hardwarecomponenten zoals sensoren, LED's, motoren, enzovoort te vergemakkelijken.
+
+Dus, hoewel de Arduino-programmeertaal in wezen C/C++ is, biedt het een eenvoudigere syntax en enkele specifieke functies die het gemakkelijker maken om met Arduino-borden te werken.
 
 ## 1.2 De setup en loop functies
 
@@ -63,14 +68,14 @@ bool isLEDOn = true; // Definieer een bool variabele genaamd isLEDOn en wijs de 
 ```
 
 ### int
-Het int datatype wordt gebruikt voor het opslaan van gehele getallen zonder decimale punten. Het kan zowel positieve als negatieve gehele getallen opslaan.
+Het `int` datatype wordt gebruikt voor het opslaan van gehele getallen zonder decimale punten. Het kan zowel positieve als negatieve gehele getallen opslaan.Het gegevenstype `int` een bereik van -32 768 tot 32 767.
 
 ```cpp
 int sensorValue = 0; // Definieer een int variabele genaamd sensorValue en wijs de waarde 0 toe
 ```
 
 ### float
-Het float datatype wordt gebruikt voor het opslaan van getallen met een decimaal punt, ook wel bekend als kommagetallen.
+Het `float` datatype wordt gebruikt voor het opslaan van getallen met een decimaal punt, ook wel bekend als kommagetallen.
 
 ```cpp
 float temperature = 25.5; // Definieer een float variabele genaamd temperature en wijs de waarde 25.5 toe
