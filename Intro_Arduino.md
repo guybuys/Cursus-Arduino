@@ -51,11 +51,86 @@ void loop() {
     delay(1000);             // Wacht 1 seconde
 }
 ```
-# Hoofdstuk 2: Variabelen en Datatypes
+
+# Hoofdstuk 2: Pinnen en de bijhorende Arduino functies
+
+## 2.1 Inleiding tot de Arduino pinnen
+
+Pinnen op een Arduino-board zijn fysieke aansluitingen die kunnen worden gebruikt om gegevens te verzenden en ontvangen van externe apparaten. Elk pin heeft een uniek nummer dat wordt gebruikt om deze te identificeren in de code. Afhankelijk van het type board zijn er digitale pinnen (die alleen aan of uit kunnen staan) en analoge pinnen (die variabele spanningen kunnen meten).
+
+## 2.2 pinMode() functie
+
+De **pinMode()** functie wordt gebruikt om de modus van een pin in te stellen als input of output. Deze functie heeft twee parameters: het pinnummer en de modus (INPUT of OUTPUT).
+
+Voorbeeld:
+
+```cpp
+int ledPin = 13;
+void setup() {
+  pinMode(ledPin, OUTPUT); // Stel de pin 13 in als output
+}
+```
+## 2.3 digitalWrite() functie
+
+De **digitalWrite()** functie wordt gebruikt om een digitale pin in te schakelen (HIGH) of uit te schakelen (LOW). Deze functie heeft twee parameters: het pinnummer en de staat (HIGH of LOW).
+
+Voorbeeld:
+
+```cpp
+int ledPin = 13;
+void loop() {
+  digitalWrite(ledPin, HIGH); // Schakel de LED aan
+  delay(1000); // Wacht 1 seconde
+  digitalWrite(ledPin, LOW); // Schakel de LED uit
+  delay(1000); // Wacht 1 seconde
+}
+```
+## 2.4 digitalRead() functie
+
+De **digitalRead()** functie wordt gebruikt om de huidige staat van een digitale pin te lezen. Deze functie geeft **HIGH** terug als de pin actief is (hoog) en **LOW** als de pin inactief is (laag).
+
+Voorbeeld:
+
+```cpp
+int switchPin = 2;
+void loop() {
+  int state = digitalRead(switchPin); // Lees de staat van de schakelaar
+  if (state == HIGH) {
+    // Voer actie uit als de schakelaar is ingedrukt
+  }
+}
+```
+## 2.5 analogRead() functie
+
+De **analogRead()** functie wordt gebruikt om de analoge waarde te lezen van een analoge pin. Deze functie geeft een getal tussen 0 en 1023 terug, dat overeenkomt met een spanning tussen 0V en 5V (voor een standaard Arduino UNO-board).
+
+Voorbeeld:
+
+```cpp
+int sensorPin = A0;
+void loop() {
+  int sensorValue = analogRead(sensorPin); // Lees de waarde van de sensor
+}
+```
+## 2.6 analogWrite() functie
+
+De **analogWrite()** functie wordt gebruikt om een **PWM** (Pulse Width Modulation) signaal uit te sturen op een PWM-compatibele pin. Deze functie heeft twee parameters: het **pinnummer** en de gewenste **duty cycle** (een waarde tussen 0 en 255, waarbij 0 de pin volledig uitschakelt en 255 de pin volledig inschakelt).
+
+Voorbeeld:
+
+```cpp
+int ledPin = 9;
+void loop() {
+  analogWrite(ledPin, 128); // Stel de helderheid van de LED in op de helft
+}
+```
+Dit hoofdstuk geeft een allereerste basis overzicht over het gebruik van pinnen op een Arduino-board en de bijbehorende functies om ze te bedienen. Met deze functies kun je digitale en analoge pinnen configureren, hun toestand lezen en schrijven, en PWM-signalen genereren voor taken zoals het regelen van de helderheid van een LED. Afhankelijke van het type Arduino-bord en de gebruikte micro controller, kunnen er verschillen zijn bij het bebruik van analogRead en analogWrite.
+
+# Hoofdstuk 3: Variabelen en Datatypes
 
 In dit hoofdstuk zullen we de basisprincipes van het aanmaken van variabelen met verschillende datatypes in Arduino-programmering verkennen.
 
-## 2.1 Variabelen en hun types
+## 3.1 Variabelen en hun types
 
 Variabelen in Arduino-programmering zijn symbolische namen voor geheugenlocaties waarin gegevens kunnen worden opgeslagen en gewijzigd tijdens de uitvoering van het programma. Het type van een variabele bepaalt welk soort gegevens het kan bevatten.
 
@@ -81,14 +156,14 @@ Het `float` datatype wordt gebruikt voor het opslaan van getallen met een decima
 float temperature = 25.5; // Definieer een float variabele genaamd temperature en wijs de waarde 25.5 toe
 ```
 
-## 2.2 Variabelen declareren en initialiseren
+## 3.2 Variabelen declareren en initialiseren
 Om een variabele in Arduino te gebruiken, moet deze worden gedeclareerd met een datatype en een unieke naam. De variabele kan vervolgens worden geïnitialiseerd met een beginwaarde, indien nodig.
 
 Voorbeeld
 ```cpp
 int ledPin = 13; // Declareer een int variabele genaamd ledPin en wijs de waarde 13 toe als pinnummer
 ```
-# Hoofdstuk 3: Operatoren
+# Hoofdstuk 4: Operatoren
 
 **Operatoren** worden gebruikt om verschillende bewerkingen uit te voeren op gegevens, variabelen of expressies, afhankelijk van het type operator en de gegeven context.
 
@@ -117,11 +192,11 @@ Hier zijn enkele veelvoorkomende soorten operatoren:
 - **<<** (bitwise linksverschuiving): Verschuift de bits naar links.
 - **>>** (bitwise rechtsverschuiving): Verschuift de bits naar rechts.
 
-# Hoofdstuk 4: Functies in Arduino-programmering
+# Hoofdstuk 5: Functies in Arduino-programmering
 
 Functies in Arduino-programmering stellen ons in staat om stukken code te organiseren en te hergebruiken. In dit hoofdstuk zullen we leren hoe functies moeten worden opgebouwd en hoe variabelen kunnen worden doorgegeven aan of geretourneerd vanuit functies.
 
-## 4.1 De opbouw van een functie
+## 5.1 De opbouw van een functie
 
 Een functie in Arduino-programmering bestaat uit een functiekop en een functieblok. De functiekop definieert de naam van de functie, het retourtype (indien van toepassing) en eventuele parameters die de functie accepteert. Het functieblok bevat de uitvoerbare code van de functie.
 
@@ -137,7 +212,7 @@ int addNumbers(int a, int b) {
 ```
 In dit voorbeeld is addNumbers de naam van de functie, int is het retourtype, en int a en int b zijn de parameters die de functie accepteert.
 
-## 4.2 Functies met parameters
+## 5.2 Functies met parameters
 Functies kunnen parameters accepteren, waardoor ze kunnen worden aangeroepen met verschillende waarden. Parameters worden gedefinieerd tussen de haakjes van de functiekop.
 
 Een voorbeeld van een functie met parameters:
@@ -152,7 +227,7 @@ void blinkLED(int pinNumber, int duration) {
 ```
 In dit voorbeeld accepteert de functie blinkLED twee parameters: pinNumber en duration.
 
-## 4.3 Functies met retourwaarden
+## 5.3 Functies met retourwaarden
 Functies kunnen ook retourwaarden teruggeven aan de code die ze heeft aangeroepen. Het retourtype van de functie wordt gedefinieerd in de functiekop, en de return-instructie wordt gebruikt om een waarde terug te geven.
 
 Een voorbeeld van een functie met een retourwaarde:
@@ -165,7 +240,7 @@ int calculateSum(int a, int b) {
 ```
 In dit voorbeeld retourneert de functie calculateSum het resultaat van de optelling van a en b.
 
-## Hoofdstuk 5: Printen met **Serial**
+## Hoofdstuk 6: Printen met **Serial**
 
 **'Serial'** is een *ingebouwde klasse* die wordt gebruikt voor *seriële communicatie*. We gaan momenteel niet dieper in op het *concept* 'klasse' maar je kan het beschouwen als een apart programma dat in andere programma's kan gebruikt worden. Alles wat behoort tot de **Serial**-klasse begint met **'Serial.'** met daar een fuctie-naam (en haakjes) achter. Een *functie* van een *klasse* noemen we **'methode'**. 
 In Arduino wordt Serial gebruikt om toegang te krijgen tot de seriële interface van de Arduino-board, waarmee je gegevens kunt verzenden en ontvangen via de seriële poort (USB-poort) van het board.
@@ -191,11 +266,11 @@ void loop() {
 ```
 In dit voorbeeld wordt de **Serial**-klasse gebruikt om de tekst **"Hello, World!"** naar de seriële monitor te verzenden met behulp van de println()-methode. De seriële communicatie wordt eerst geïnitialiseerd in de setup()-functie met de begin()-methode.
 
-## Hoofdstuk 6: Control flow statements (Controlestructuren)
+## Hoofdstuk 7: Control flow statements (Controlestructuren)
 
 In dit hoofdstuk zullen we leren hoe we de uitvoeringsstroom van een Arduino-programma kunnen beheren met behulp van control flow statements. Control flow statements stellen ons in staat om beslissingen te nemen en herhalingen uit te voeren, wat essentieel is voor het creëren van complexe en dynamische programma's.
 
-### 6.1. Het if-statement
+### 7.1. Het if-statement
 
 ##### Beschrijving en doel:
 
@@ -248,7 +323,7 @@ if ((temperature > 20) && (humidity > 60)) {
 In dit voorbeeld wordt hey **if**-statement gebruikt in combinatie met de logische **EN**-operator (&&) om te controleren of zowel de temperatuur hoger is dan 20 graden Celsius als de luchtvochtigheid hoger is dan 60%.
 Dit geeft je een goed startpunt om het **if**-statement te begrijpen en te gebruiken in Arduino-programmering, evenals het gebruik van logische operatoren om complexere voorwaarden te evalueren. Het is een goede gewoonte om iedere voorwaarde apart tussen haakjes te zetten.
 
-### 6.2. Het else-statement
+### 7.2. Het else-statement
 
 ##### Beschrijving en doel:
 
@@ -291,7 +366,7 @@ Als de *sensorwaarde* groter is dan 750, wordt de eerste *codeblok* uitgevoerd.
 Als de *sensorwaarde* tussen 500 en 750 ligt, wordt de tweede *codeblok* uitgevoerd.
 Als geen van de bovenstaande voorwaarden *waar* is, wordt het laatste *codeblok* uitgevoerd.
 
-### 6.3 De while-loop
+### 7.3 De while-loop
 ##### Beschrijving en doel:
 
 De **while**-loop is een *controlestructuur* die wordt gebruikt om een blok code herhaaldelijk uit te voeren zolang een bepaalde voorwaarde *waar* is.
@@ -327,7 +402,7 @@ Opmerking:
 Het is belangrijk om ervoor te zorgen dat de voorwaarde van een **while**-loop op een gegeven moment onwaar wordt, anders kan de loop in een *oneindige lus* terechtkomen en komt het programma vast te zitten.
 Zorg ervoor dat de voorwaarde wordt bijgewerkt binnen de loop, zodat deze op enig moment onwaar wordt en de uitvoering van de loop eindigt.
 
-### 6.4 De for-loop
+### 7.4 De for-loop
 ##### Beschrijving en doel:
 
 - De **for**-loop is een controlestructuur die wordt gebruikt om een blok code herhaaldelijk uit te voeren voor een specifiek aantal keren.
@@ -363,7 +438,7 @@ Opmerking:
 De for-loop is bijzonder handig wanneer je een bekend aantal iteraties hebt of wanneer je wilt itereren over sequentiële gegevens, zoals arrays *(dit leren we binnenkort nog)*.
 Zorg ervoor dat je de variabelen initialiseert, de voorwaarde controleert en de update uitvoert op een manier die logisch en correct is om onverwacht gedrag te voorkomen.
 
-### 6.5 De switch-case-structuur
+### 7.5 De switch-case-structuur
 
 ##### Beschrijving en doel:
 
@@ -419,3 +494,70 @@ In dit voorbeeld wordt de waarde van de *variabele* **key** gecontroleerd en wor
 Als **key** gelijk is aan 1, 2 of 3, wordt een bijbehorende boodschap afgedrukt.
 Als **key** geen van deze waarden heeft, wordt de boodschap "Ongeldige sleutel" afgedrukt.
 
+# Hoofdstuk 8: Arrays in Arduino
+
+## 8.1 Inleiding tot Arrays
+
+Een **array** is een datatype waarmee je meerdere waarden van hetzelfde gegevenstype kunt opslaan in één variabele. In Arduino worden arrays vaak gebruikt om een verzameling van gegevens, zoals sensorwaarden, op te slaan, of om meerdere LED's of andere componenten te beheren. Array kan je vertalen als 'rij' of 'reeks'.
+
+## 8.2 Declaratie en Initialisatie van Arrays
+
+In Arduino kun je een array declareren en initialiseren met de gewenste grootte en gegevens. Hier is een voorbeeld van hoe je een array van integers declareert en initialiseren:
+
+```cpp
+int sensorValues[5] = {0, 10, 20, 30, 40}; // Een array van 5 integers
+In dit voorbeeld hebben we een array sensorValues gemaakt met 5 elementen, en we hebben deze geïnitialiseerd met de waarden 0, 10, 20, 30 en 40.
+```
+
+## 8.3 Toegang tot Elementen van een Array
+
+Je kunt individuele elementen van een array benaderen door hun index te gebruiken. De index begint meestal bij 0 voor het eerste element en gaat verder tot de grootte van de array minus één. Hier is hoe je toegang krijgt tot een element van een array:
+
+```cpp
+int value = sensorValues[2]; // Toegang tot het derde element van de array (index 2)
+```
+In dit voorbeeld krijgt value de waarde 20, omdat dit het derde element is van de array sensorValues.
+
+## 8.4 Itereren over een Array
+
+Je kunt een loop gebruiken om door alle elementen van een array te itereren en ze één voor één te verwerken. Dit kan handig zijn als je alle sensorwaarden wilt afdrukken of als je alle LED's in een array wilt inschakelen. Hier is een voorbeeld van hoe je over een array kunt itereren:
+
+```cpp
+for (int i = 0; i < 5; i++) {
+  Serial.println(sensorValues[i]); // Druk elk element van de array af
+}
+```
+In dit voorbeeld gebruiken we een for-loop om door elk element van de array sensorValues te itereren en de waarde ervan af te drukken naar de seriële monitor.
+
+## 8.5 Een Array gebruiken om pinnen te sturen
+
+Laten we een voorbeeld maken van hoe je pinnummers in een array kunt plaatsen en vervolgens een looplicht kunt maken met behulp van iteratie. Laten we zeggen dat we een looplicht willen maken met LED's die zijn aangesloten op pinnen 2 tot en met 7 op een Arduino-bord. Hier is hoe je dat kunt doen:
+
+```cpp
+// Definieer de pinnen voor het looplicht
+int ledPins[] = {2, 3, 4, 5, 6, 7};
+int numberOfLEDs = sizeof(ledPins) / sizeof(ledPins[0]);
+
+void setup() {
+  // Configureer alle pinnen als uitgang
+  for (int i = 0; i < numberOfLEDs; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+}
+
+void loop() {
+  // Schakel elk LED aan en uit in een loop
+  for (int i = 0; i < numberOfLEDs; i++) {
+    digitalWrite(ledPins[i], HIGH); // Schakel LED aan
+    delay(100); // Wacht 100 milliseconden
+    digitalWrite(ledPins[i], LOW); // Schakel LED uit
+  }
+}
+```
+In dit voorbeeld hebben we een array ledPins gemaakt die de pinnen bevat waarop onze LED's zijn aangesloten. We hebben ook een variabele **numberOfLEDs** gedefinieerd om het aantal LED's in de array te bepalen.
+
+In de **setup()**-functie worden alle pinnen geconfigureerd als uitgangen met behulp van een **for-loop** die over de ledPins array itereert.
+
+In de **loop()**-functie gebruiken we opnieuw een **for-loop** om door elke pin in de ledPins array te itereren. We schakelen elke **LED** afwisselend aan en uit met behulp van **digitalWrite()** en **delay()** om een looplichteffect te creëren.
+
+Dit voorbeeld demonstreert hoe je pinnen in een array kunt plaatsen en vervolgens kunt itereren over de array om een reeks acties uit te voeren, zoals het aansturen van LED's in dit geval.
